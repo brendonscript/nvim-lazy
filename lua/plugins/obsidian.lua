@@ -1,36 +1,60 @@
--- TODO: Configure
 return {
   'epwalsh/obsidian.nvim',
   version = '*', -- recommended, use latest release instead of latest commit
   lazy = true,
-  enabled = false,
-  event = {
-    -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-    -- refer to `:h file-pattern` for more examples
-    'BufReadPre ~/Documents/Notes/*.md',
-    'BufNewFile ~/Documents/Notes/*.md',
-    'BufReadPre /mnt/c/Users/Brendon/Documents/Notes/*.md',
-    'BufNewFile /mnt/c/Users/Brendon/Documents/Notes/*.md',
-  },
+  ft = 'markdown',
+  -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+  -- event = {
+  --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+  --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
+  --   -- refer to `:h file-pattern` for more examples
+  --   "BufReadPre path/to/my-vault/*.md",
+  --   "BufNewFile path/to/my-vault/*.md",
+  -- },
+  cmd = { 'ObsidianSearch', 'ObsidianQuickSwitch' },
   dependencies = {
-    -- Required.
     'nvim-lua/plenary.nvim',
-
-    -- see below for full list of optional dependencies ??
+    'nvim-telescope/telescope.nvim',
   },
   opts = {
+    disable_frontmatter = true,
+    picker = {
+      name = 'telescope.nvim',
+    },
     workspaces = {
       {
-        name = 'personal',
-        path = '~/vaults/personal',
-      },
-      {
-        name = 'work',
-        path = '~/vaults/work',
+        name = 'personal-windows',
+        path = '/mnt/c/Users/Brendon/Documents/Notes',
       },
     },
-
-    -- see below for full list of options ??
+    daily_notes = {
+      folder = 'Daily',
+      date_format = '%Y-%m-%d',
+      template = nil,
+    },
+    completion = {
+      nvim_cmp = true,
+    },
+    ui = {
+      enable = false, -- set to false to disable all additional syntax features
+      checkboxes = {
+        [' '] = { char = '', hl_group = 'ObsidianTodo' },
+        ['x'] = { char = '', hl_group = 'ObsidianDone' },
+        ['>'] = { char = '', hl_group = 'ObsidianRightArrow' },
+        ['~'] = { char = '󰰱', hl_group = 'ObsidianTilde' },
+        ['!'] = { char = '', hl_group = 'ObsidianImportant' },
+        ['/'] = { char = '', hl_group = 'ObsidianWip' },
+      },
+    },
   },
+  config = function(_, opts)
+    vim.keymap.set('n', 'gd', function()
+      if require('obsidian').util.cursor_on_markdown_link() then
+        return '<cmd>ObsidianFollowLink<CR>'
+      else
+        return 'gd'
+      end
+    end, { noremap = false, expr = true })
+    require('obsidian').setup(opts)
+  end,
 }

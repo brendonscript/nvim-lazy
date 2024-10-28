@@ -20,17 +20,17 @@ opt.spell = false
 --   require('utils.neovide')
 -- end
 
-if utils.is_wsl() then
-  vim.api.nvim_set_var('clipboard', {
-    name = 'WslClipboard',
-    copy = {
-      ['+'] = 'clip.exe',
-      ['*'] = 'clip.exe',
-    },
-    paste = {
-      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    },
-    cache_enabled = 0,
-  })
-end
+-- if utils.is_wsl() then
+--   vim.api.nvim_set_var('clipboard', {
+--     name = 'WslClipboard',
+--     copy = {
+--       ['+'] = 'clip.exe',
+--       ['*'] = 'clip.exe',
+--     },
+--     paste = {
+--       ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--       ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--     },
+--     cache_enabled = 0,
+--   })
+-- end

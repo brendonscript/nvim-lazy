@@ -1,5 +1,6 @@
 return {
   'aserowy/tmux.nvim',
+  enabled = false,
   lazy = false,
   keys = {
     {

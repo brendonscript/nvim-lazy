@@ -1,7 +1,7 @@
 return {
   'mrjones2014/smart-splits.nvim',
   lazy = false,
-  enabled = false,
+  enabled = true,
   opts = {},
   keys = {
     {

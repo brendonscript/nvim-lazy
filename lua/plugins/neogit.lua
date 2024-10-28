@@ -3,7 +3,8 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim', -- required
     'sindrets/diffview.nvim', -- optional
-    'ibhagwan/fzf-lua', -- optional
+    'nvim-telescope/telescope.nvim',
+    -- 'ibhagwan/fzf-lua', -- optional
   },
   cmd = 'Neogit',
   keys = {
@@ -11,7 +12,8 @@ return {
   },
   opts = {
     integrations = {
-      fzf_lua = true,
+      telescope = true,
+      fzf_lua = false,
       diffview = true,
     },
   },
