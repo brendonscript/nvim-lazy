@@ -1,7 +1,7 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
-local utils = require('utils.helpers')
+local utils = require 'utils.helpers'
 local opt = vim.opt
 vim.g.root_spec = { 'cwd' }
 

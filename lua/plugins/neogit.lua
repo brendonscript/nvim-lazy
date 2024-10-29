@@ -1,10 +1,11 @@
 return {
+  enabled = false,
   'NeogitOrg/neogit',
   dependencies = {
     'nvim-lua/plenary.nvim', -- required
     'sindrets/diffview.nvim', -- optional
-    'nvim-telescope/telescope.nvim',
-    -- 'ibhagwan/fzf-lua', -- optional
+    'ibhagwan/fzf-lua',
+    -- 'nvim-telescope/telescope.nvim'
   },
   cmd = 'Neogit',
   keys = {
@@ -12,8 +13,8 @@ return {
   },
   opts = {
     integrations = {
-      telescope = true,
-      fzf_lua = false,
+      -- telescope = true,
+      fzf_lua = true,
       diffview = true,
     },
   },

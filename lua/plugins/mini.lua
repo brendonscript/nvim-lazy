@@ -1,6 +1,7 @@
 return {
   {
     'echasnovski/mini.move',
+    optional = true,
     opts = {
       mappings = {
         line_up = '<M-K>',
@@ -32,6 +33,7 @@ return {
   },
   {
     'echasnovski/mini.animate',
+    optional = true,
     opts = {
       cursor = {
         enable = false,
@@ -41,19 +43,4 @@ return {
       },
     },
   },
-  -- { 'nvim-tree/nvim-web-devicons', lazy = true },
-  -- {
-  --   'echasnovski/mini.icons',
-  --   enabled = false,
-  --   opts = {
-  --     extension = {
-  --       norg = {
-  --         glyph = '',
-  --       },
-  --       json = {
-  --         glyph = '󰘦',
-  --       },
-  --     },
-  --   },
-  -- },
 }

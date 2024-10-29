@@ -14,12 +14,15 @@ return {
   cmd = { 'ObsidianSearch', 'ObsidianQuickSwitch' },
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'nvim-telescope/telescope.nvim',
+    'hrsh7th/nvim-cmp',
+    'ibhagwan/fzf-lua',
+    -- 'nvim-telescope/telescope.nvim'
   },
   opts = {
     disable_frontmatter = true,
     picker = {
-      name = 'telescope.nvim',
+      name = 'fzf-lua',
+      -- name = 'telescope.nvim'
     },
     workspaces = {
       {
@@ -47,14 +50,10 @@ return {
       },
     },
   },
-  config = function(_, opts)
-    vim.keymap.set('n', 'gd', function()
-      if require('obsidian').util.cursor_on_markdown_link() then
-        return '<cmd>ObsidianFollowLink<CR>'
-      else
-        return 'gd'
-      end
-    end, { noremap = false, expr = true })
-    require('obsidian').setup(opts)
-  end,
 }
+
+-- if vim.g.brendonscript.picker == 'fzf' then
+--   picker = 'fzf-lua'
+-- else
+--   picker = 'telescope'
+-- end
